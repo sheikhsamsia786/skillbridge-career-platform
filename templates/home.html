@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SkillBridge | Build Your Career</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+            color: #fff;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* NAVBAR */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 25px 60px;
+            animation: slideDown 1s ease;
+        }
+
+        nav h1 {
+            font-size: 26px;
+            font-weight: 700;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin-left: 25px;
+            font-weight: 500;
+            transition: opacity 0.3s ease;
+        }
+
+        nav a:hover {
+            opacity: 0.7;
+        }
+
+        /* HERO SECTION */
+        .hero {
+            text-align: center;
+            padding: 120px 20px 80px;
+            position: relative;
+        }
+
+        .hero h2 {
+            font-size: 52px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeUp 1s ease forwards;
+        }
+
+        .hero p {
+            font-size: 18px;
+            max-width: 650px;
+            margin: 0 auto 40px;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeUp 1s ease forwards;
+            animation-delay: 0.2s;
+        }
+
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeUp 1s ease forwards;
+            animation-delay: 0.4s;
+        }
+
+        .btn-primary {
+            padding: 14px 34px;
+            background: linear-gradient(135deg, #00c6ff, #0072ff);
+            border: none;
+            border-radius: 30px;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            transform: scale(1.08);
+            box-shadow: 0 0 25px rgba(0, 198, 255, 0.7);
+        }
+
+        .btn-outline {
+            padding: 14px 34px;
+            background: transparent;
+            border: 2px solid #fff;
+            border-radius: 30px;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+            transition: transform 0.3s ease, background 0.3s ease;
+        }
+
+        .btn-outline:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: scale(1.05);
+        }
+
+        /* GLOW BACKGROUND */
+        .glow {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(0,198,255,0.35), transparent 70%);
+            top: -50px;
+            left: 50%;
+            transform: translateX(-50%);
+            filter: blur(40px);
+            z-index: -1;
+            animation: pulse 4s infinite ease-in-out;
+        }
+
+        /* FEATURES */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 25px;
+            padding: 80px 60px;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 18px;
+            padding: 30px;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            backdrop-filter: blur(12px);
+        }
+
+        .card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .card h3 {
+            font-size: 20px;
+            margin-bottom: 12px;
+        }
+
+        .card p {
+            font-size: 15px;
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            font-size: 14px;
+            opacity: 0.7;
+        }
+
+        /* ANIMATIONS */
+        @keyframes fadeUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0% { transform: translateX(-50%) scale(1); }
+            50% { transform: translateX(-50%) scale(1.2); }
+            100% { transform: translateX(-50%) scale(1); }
+        }
+
+        @media (max-width: 768px) {
+            .hero h2 {
+                font-size: 38px;
+            }
+
+            nav {
+                padding: 20px;
+            }
+
+            .features {
+                padding: 60px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <h1>SkillBridge</h1>
+    <div>
+        <a href="/login">Login</a>
+        <a href="/register">Register</a>
+    </div>
+</nav>
+
+<section class="hero">
+    <div class="glow"></div>
+    <h2>Build Your Career with SkillBridge</h2>
+    <p>
+        SkillBridge helps students discover the right career path through structured skill roadmaps,
+        progress tracking, and smart guidance — all in one platform.
+    </p>
+    <div class="hero-buttons">
+        <button class="btn-primary">Get Started</button>
+        <button class="btn-outline">Login</button>
+    </div>
+</section>
+
+<section class="features">
+    <div class="card">
+        <h3>🎯 Career Roadmaps</h3>
+        <p>Step-by-step learning paths designed for students and beginners.</p>
+    </div>
+    <div class="card">
+        <h3>📊 Skill Progress</h3>
+        <p>Track your learning progress and stay motivated every day.</p>
+    </div>
+    <div class="card">
+        <h3>🚀 Student Friendly</h3>
+        <p>Modern, simple, and designed to make career planning easy.</p>
+    </div>
+</section>
+
+<footer>
+    © 2026 SkillBridge • Built for Students • Designed for Careers 🚀
+</footer>
+
+</body>
+</html>

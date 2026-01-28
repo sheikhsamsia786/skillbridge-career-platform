@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Career Roadmap | SkillBridge</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #141e30, #243b55);
+            color: white;
+        }
+
+        /* NAVBAR */
+        .navbar {
+            padding: 20px 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(10px);
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #00c6ff;
+        }
+
+        .nav-links a {
+            color: white;
+            margin-left: 20px;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        /* MAIN */
+        .container {
+            padding: 50px 60px;
+            animation: fadeIn 1s ease;
+        }
+
+        .title {
+            font-size: 34px;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            opacity: 0.85;
+            margin-bottom: 40px;
+        }
+
+        /* ROADMAP */
+        .roadmap {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .step {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            background: rgba(255,255,255,0.12);
+            padding: 25px;
+            border-radius: 16px;
+            animation: slideIn 0.8s ease forwards;
+            opacity: 0;
+        }
+
+        .step:nth-child(1) { animation-delay: 0.2s; }
+        .step:nth-child(2) { animation-delay: 0.4s; }
+        .step:nth-child(3) { animation-delay: 0.6s; }
+        .step:nth-child(4) { animation-delay: 0.8s; }
+        .step:nth-child(5) { animation-delay: 1s; }
+
+        .circle {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: linear-gradient(90deg, #00c6ff, #0072ff);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        .step-content h3 {
+            margin-bottom: 6px;
+        }
+
+        .step-content p {
+            opacity: 0.8;
+            font-size: 14px;
+        }
+
+        .step:hover {
+            transform: translateX(8px);
+            box-shadow: 0 0 25px rgba(0,198,255,0.4);
+        }
+
+        /* BUTTON */
+        .back-btn {
+            margin-top: 40px;
+            padding: 14px 30px;
+            border-radius: 30px;
+            border: none;
+            background: linear-gradient(90deg, #00c6ff, #0072ff);
+            color: white;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s ease;
+        }
+
+        .back-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(0,198,255,0.6);
+        }
+
+        /* ANIMATIONS */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideIn {
+            from { transform: translateX(-30px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        /* MOBILE */
+        @media (max-width: 768px) {
+            .navbar, .container {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<div class="navbar">
+    <div class="logo">SkillBridge</div>
+    <div class="nav-links">
+        <a href="dashboard.html">Dashboard</a>
+        <a href="#">Roadmap</a>
+        <a href="#">Logout</a>
+    </div>
+</div>
+
+<!-- MAIN -->
+<div class="container">
+
+    <div class="title">🚀 Web Developer Roadmap</div>
+    <div class="subtitle">
+        Follow this step-by-step learning path to become a confident Web Developer.
+    </div>
+
+    <div class="roadmap">
+
+        <div class="step">
+            <div class="circle">1</div>
+            <div class="step-content">
+                <h3>HTML & Web Basics</h3>
+                <p>Learn page structure, tags, forms, and semantic HTML.</p>
+            </div>
+        </div>
+
+        <div class="step">
+            <div class="circle">2</div>
+            <div class="step-content">
+                <h3>CSS & Responsive Design</h3>
+                <p>Styling, layouts, flexbox, grid, and mobile responsiveness.</p>
+            </div>
+        </div>
+
+        <div class="step">
+            <div class="circle">3</div>
+            <div class="step-content">
+                <h3>JavaScript Fundamentals</h3>
+                <p>Logic, DOM manipulation, events, and basic interactivity.</p>
+            </div>
+        </div>
+
+        <div class="step">
+            <div class="circle">4</div>
+            <div class="step-content">
+                <h3>Backend with Flask</h3>
+                <p>Routes, templates, authentication, and APIs.</p>
+            </div>
+        </div>
+
+        <div class="step">
+            <div class="circle">5</div>
+            <div class="step-content">
+                <h3>Projects & Deployment</h3>
+                <p>Build real projects and deploy them online.</p>
+            </div>
+        </div>
+
+    </div>
+
+    <button class="back-btn" onclick="location.href='dashboard.html'">
+        ← Back to Dashboard
+    </button>
+
+</div>
+
+</body>
+</html>

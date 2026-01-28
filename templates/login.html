@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login | SkillBridge</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Main Card */
+        .login-wrapper {
+            width: 85%;
+            max-width: 1100px;
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(15px);
+            border-radius: 20px;
+            display: flex;
+            overflow: hidden;
+            animation: fadeIn 1s ease;
+        }
+
+        /* LEFT SIDE */
+        .login-left {
+            flex: 1;
+            padding: 60px;
+            color: white;
+            animation: slideLeft 1s ease;
+        }
+
+        .login-left h2 {
+            font-size: 34px;
+            margin-bottom: 10px;
+        }
+
+        .login-left p {
+            opacity: 0.85;
+            margin-bottom: 30px;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 14px 18px;
+            border-radius: 12px;
+            border: none;
+            outline: none;
+            font-size: 15px;
+            background: #eef4ff;
+            color: #000;
+        }
+
+        .input-group input::placeholder {
+            color: #777;
+        }
+
+        .login-btn {
+            width: 100%;
+            padding: 14px;
+            border-radius: 30px;
+            border: none;
+            background: linear-gradient(90deg, #00c6ff, #0072ff);
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: not-allowed;
+            opacity: 0.6;
+            transition: all 0.3s ease;
+        }
+
+        .login-btn.active {
+            cursor: pointer;
+            opacity: 1;
+        }
+
+        .login-btn.active:hover {
+            transform: scale(1.03);
+            box-shadow: 0 0 20px rgba(0, 198, 255, 0.6);
+        }
+
+        .register-text {
+            margin-top: 20px;
+            font-size: 14px;
+        }
+
+        .register-text a {
+            color: #00c6ff;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        /* RIGHT SIDE */
+        .login-right {
+            flex: 1;
+            padding: 60px;
+            color: white;
+            background: radial-gradient(circle at top right, #00c6ff55, transparent);
+            animation: slideRight 1s ease;
+        }
+
+        .login-right h1 {
+            font-size: 42px;
+            margin-bottom: 20px;
+        }
+
+        .login-right p {
+            font-size: 17px;
+            line-height: 1.6;
+            opacity: 0.9;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideLeft {
+            from { transform: translateX(-40px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        @keyframes slideRight {
+            from { transform: translateX(40px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        /* Mobile */
+        @media (max-width: 900px) {
+            .login-wrapper {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="login-wrapper">
+
+        <!-- LEFT -->
+        <div class="login-left">
+            <h2>Welcome Back 👋</h2>
+            <p>Login to continue building your career roadmap</p>
+
+            <form>
+
+                <!-- Hidden inputs to BLOCK browser autofill -->
+                <input type="text" style="display:none">
+                <input type="password" style="display:none">
+
+                <div class="input-group">
+                    <input 
+                        type="email"
+                        placeholder="Enter your email"
+                        autocomplete="new-email"
+                        id="email">
+                </div>
+
+                <div class="input-group">
+                    <input 
+                        type="password"
+                        placeholder="Enter your password"
+                        autocomplete="new-password"
+                        id="password">
+                </div>
+
+                <button type="submit" class="login-btn" id="loginBtn">
+                    Login
+                </button>
+
+            </form>
+
+            <div class="register-text">
+                Don’t have an account?
+                <a href="register.html">Register</a>
+            </div>
+        </div>
+
+        <!-- RIGHT -->
+        <div class="login-right">
+            <h1>Build your future<br>with <span style="color:#00c6ff">SkillBridge</span></h1>
+            <p>
+                Personalized career roadmaps, skill tracking,
+                and clear learning paths — all in one modern platform
+                built especially for students.
+            </p>
+        </div>
+
+    </div>
+
+    <script>
+        const email = document.getElementById("email");
+        const password = document.getElementById("password");
+        const loginBtn = document.getElementById("loginBtn");
+
+        function checkInput() {
+            if (email.value.trim() !== "" && password.value.trim() !== "") {
+                loginBtn.classList.add("active");
+                loginBtn.disabled = false;
+            } else {
+                loginBtn.classList.remove("active");
+                loginBtn.disabled = true;
+            }
+        }
+
+        email.addEventListener("input", checkInput);
+        password.addEventListener("input", checkInput);
+    </script>
+
+</body>
+</html>
