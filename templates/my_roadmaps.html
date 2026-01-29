@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>My Roadmaps</title>
+
+<style>
+body {
+    background: #0f2027;
+    color: white;
+    font-family: Arial, sans-serif;
+}
+
+.roadmap {
+    background: #203a43;
+    padding: 20px;
+    border-radius: 12px;
+    margin: 20px auto;
+    width: 70%;
+}
+
+.progress-bar {
+    height: 10px;
+    background: #333;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-top: 15px;
+}
+
+.progress {
+    height: 100%;
+    background: linear-gradient(90deg, #00ff99, #00c6ff);
+    width: 0%;
+}
+</style>
+</head>
+
+<body>
+
+<h1 style="text-align:center;">📍 My Roadmaps</h1>
+
+{% for roadmap in roadmaps %}
+<div class="roadmap" data-id="{{ roadmap.id }}">
+
+    <h2>{{ roadmap.title }}</h2>
+    <p>{{ roadmap.description }}</p>
+
+    {% set completed = 0 %}
+    {% set total = roadmap.steps|length %}
+
+    <ul>
+    {% for step in roadmap.steps %}
+        {% if step.done %}
+            {% set completed = completed + 1 %}
+        {% endif %}
+
+        <li>
+            <input type="checkbox"
+                   {% if step.done %}checked{% endif %}
+                   onchange="updateProgress(this, {{ roadmap.id }}, {{ loop.index0 }})">
+            {{ step.text }}
+        </li>
+    {% endfor %}
+    </ul>
+
+    {% set percent = (completed / total * 100) if total > 0 else 0 %}
+
+    <div class="progress-bar">
+        <div class="progress" style="width: {{ percent }}%"></div>
+    </div>
+
+  <p class="percent-text">{{ percent|round(0) }}% completed</p>
+
+
+</div>
+{% endfor %}
+
+<script>
+function updateProgress(checkbox, roadmapId, stepIndex) {
+
+    const roadmapDiv = checkbox.closest(".roadmap");
+    const checkboxes = roadmapDiv.querySelectorAll("input[type='checkbox']");
+
+    let steps = [];
+    let completed = 0;
+
+    checkboxes.forEach((cb) => {
+        if (cb.checked) completed++;
+        steps.push({
+            text: cb.nextSibling.textContent.trim(),
+            done: cb.checked
+        });
+    });
+
+    let percent = (completed / steps.length) * 100;
+
+    roadmapDiv.querySelector(".progress").style.width = percent + "%";
+    roadmapDiv.querySelector(".percent-text").innerText =
+        Math.round(percent) + "% completed";
+
+    fetch("/update-progress", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+            roadmap_id: roadmapId,
+            steps: steps
+        })
+    });
+}
+</script>
+
+
+</body>
+</html>
